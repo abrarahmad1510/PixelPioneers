@@ -126,12 +126,21 @@ impl CmdHandler<'_> {
         let mut file_path ;
 
         loop {
-            file_path = FileDialog::new()
-                .set_title("Select project location")
-                .set_location("~")
-                .add_filter("Scratch Project", &["sb3"])
+            let dialog = if cfg!(target_os = "macos") {
+                FileDialog::new()
+                    .set_title("Select project location")
+                    .set_location("~")
+            } else {
+                FileDialog::new()
+                    .set_title("Select project location")
+                    .set_location("~")
+                    .add_filter("Scratch Project", &["sb3"])
+            };
+            
+            file_path = dialog
                 .show_open_single_file()
                 .unwrap();
+
             if file_path.is_some() {
                 break;
             }

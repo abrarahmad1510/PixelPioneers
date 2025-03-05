@@ -43,13 +43,13 @@ export const unifiedDiff = (
 
   ctx.drawImage(
     previous,
-    (imageDiff.width - previous.width) / 2,
-    (imageDiff.height - previous.height) / 2
+    (imageDiff.width - previous.width),
+    (imageDiff.height - previous.height)
   );
   ctx.drawImage(
     current,
-    (imageDiff.width - current.width) / 2,
-    (imageDiff.height - current.height) / 2
+    (imageDiff.width - current.width),
+    (imageDiff.height - current.height)
   );
 
   return imageDiff;

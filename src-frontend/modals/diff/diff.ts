@@ -94,7 +94,6 @@ export class DiffModal extends Base {
     const useHighlights = Checkbox({}, "Use highlights");
     const plainText = Checkbox({ style: "margin-left: 10px;" }, "Plain text");
     const unified = span(
-      { style: "margin-left: -15px" },
       button(
         {
           onclick: () => (this.unify.val = false),
@@ -634,8 +633,8 @@ export class DiffModal extends Base {
     const display = scriptDiff === "script" ? "flex" : "none";
     document.querySelector<HTMLDivElement>(".copy-button")!.style.display =
       scriptDiff === "script" ? "block" : "none";
-    $plainText.parentElement!.style.display = display;
-    $highlights.parentElement!.style.display = display;
+    $plainText.parentElement!.parentElement!.style.display = display;
+    $highlights.parentElement!.parentElement!.style.display = display;
     $unified.style.display = scriptDiff === "costume" ? "block" : "none";
 
     if (scriptDiff !== "script") {
